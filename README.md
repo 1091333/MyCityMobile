@@ -1,0 +1,4 @@
+TakeaCity
+=========
+
+Aplicação mobile TakeaCity
