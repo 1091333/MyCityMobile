@@ -19,7 +19,8 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+        //this.bindEvents();
+        this.buildListviewTravels();
     },
     // Bind Event Listeners
     //
@@ -37,13 +38,69 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+        var page = document.getElementById("pageMyTravels");
+        var listeningElement = page.querySelector('.listening');
+        
+        var receivedElement = page.querySelector('.received');
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    // build list travels
+    buildListviewTravels: function(){
+        
+        // example
+        var listTravels=new Array(); 
+            listTravels[0]=['Ferias','img/travel.png','ferias de verao','12 Agosto 2013'];       
+            listTravels[1]=['Porto','img/travel.png','visita cidade porto', 'Julho 2014'];
+            listTravels[2]=['Cinema','img/travel.png', 'ida ao cinema', '22:40 PM'];
+    
+        var ullistViewTag = document.getElementById("listviewTravels");
+        
+        
+        
+        for(i=0; i<listTravels.length; i++){
+
+            var liTag = document.createElement('li');
+            liTag.setAttribute('data-split-icon', "gear");
+            liTag.setAttribute('id', listTravels[i]);
+            ullistViewTag.appendChild(liTag);
+            
+            var aTag = document.createElement('a');
+            aTag.setAttribute('href', '#' +listTravels[i][0]);
+            liTag.appendChild(aTag);
+            
+            var imgTag = document.createElement('img');
+            imgTag.setAttribute('src', listTravels[i][1]);
+            aTag.appendChild(imgTag);
+            
+            var h3Tag = document.createElement('h3');
+            var h3Tx =document.createTextNode(listTravels[i][0]);
+            h3Tag.appendChild(h3Tx);
+            aTag.appendChild(h3Tag);
+            
+            var pTag = document.createElement('p');
+            pTag.setAttribute('class', "ui-li-desc");
+            var pTx =document.createTextNode(listTravels[i][2]);
+            pTag.appendChild(pTx);
+            aTag.appendChild(pTag);
+           
+            var ptTag = document.createElement('p');
+            ptTag.setAttribute('class', "ui-li-aside");
+            var tTx = document.createTextNode(listTravels[i][3]);
+            ptTag.appendChild(tTx);
+            liTag.appendChild(ptTag);
+        /*
+            var aGearTag = document.createElement('a');
+            aGearTag.setAttribute('href', 'lists-split-' +listTravels[i][0] + '.html');
+            aGearTag.setAttribute('data-rel', 'dialog' );
+            aGearTag.setAttribute('data-transition', 'slideup' );
+            
+            liTag.appendChild(aGearTag);
+        */
+
+        }
     }
 };
