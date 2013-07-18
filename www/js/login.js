@@ -1,15 +1,14 @@
 function init() {
-    alert("init");
+    console.log("init");
     document.addEventListener("online", onOnline, false);
 	document.addEventListener("deviceready", ondeviceReady, false);
 	delete init;
 }
 
 function checkPreAuth() {
-    alert("checkPreAuth");
+    
 	console.log("checkPreAuth");
     var form = $("#loginForm");
-    alert("passou");
     if(window.localStorage["username"] != undefined && window.localStorage["password"] != undefined) {
         $("#username", form).val(window.localStorage["username"]);
         $("#password", form).val(window.localStorage["password"]);
@@ -18,7 +17,7 @@ function checkPreAuth() {
 }
 
 function handleLogin() {
-    alert("handleLogin");
+    console.log("handleLogin");
     var form = $("#loginForm");    
     //disable the button so we can't resubmit while we wait
     $("#submitButton",form).attr("disabled","disabled");
@@ -44,10 +43,10 @@ function handleLogin() {
     return false;
 }
 
-function deviceReady() {
+function ondeviceReady() {
     
     document.addEventListener("offline", onOffline, false);
-    
+
 	console.log("deviceReady");
 	$("#loginPage").on("pageinit",function() {
 		console.log("pageinit run");
@@ -60,6 +59,7 @@ function deviceReady() {
 // Handle the online event
     //
     function onOnline() {
+        console.log("onOnline");
         showAlert('Device online','connection','Done');
         var time = 2000;
         vibrate(time);
@@ -69,6 +69,7 @@ function deviceReady() {
 // Handle the offline event
     //
     function onOffline() {
+        console.log("onOnline");
         $("divOffline").show();
         showAlert('Device offline','connection','Done');
     }
