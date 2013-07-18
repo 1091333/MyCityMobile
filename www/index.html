@@ -1,79 +1,48 @@
-<!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+<!DOCTYPE HTML>
 <html>
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Take a City</title>
-      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
-      <script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-      <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-      <script src="js/index.js"></script>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Auth Demo 2</title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
+    <link rel="stylesheet" href="css/login.css" />
+	<script type="text/javascript" charset="utf-8" src="cordova-1.8.1.js"></script>
+	<script src="jquery.mobile/jquery-1.7.2.min.js"></script>
+	<script src="jquery.mobile/jquery.mobile-1.1.0.min.js"></script>
+	<script src="js/main.js"></script>
+    
+</head>
 
-        <script>
-            $(document).ready(function(){
-                $("#buttonSearch").click(function(){
-                    $("#divSearch").slideToggle();
-                });
-            });
-        </script>
-    </head>
-    <body>
-        <div data-role="page" id="pageMyTravels">
-            
-            <div data-role="header">
-                <a data-role="button" id="buttonSearch" data-icon="search" data-iconpos="notext">search</a>
-                <h1>TakeaCity</h1>
-                <a href='#panelMenu' data-icon="grid" data-iconpos="notext"></a>
-            </div>
-            <div data-role="content">
-                
-                <form>
-                    <div id="divSearch" style="display: none">
-                    <input type="search" id="search" name="search" id="search" value=""/>
-                        <br/>
-                    </div>
-                    <ul id="listviewTravels" data-role="listview" data-split-icon="gear">
-                    </ul>
-                </form>
-                
-            </div>
-             
-            <div data-role="footer">
-                <h4>Footer content</h4>
-            </div>
- 
-            <!-- PanelMenu -->
-            <div data-role='panel' id='panelMenu' data-position="right">
-                <div class='panel-content'>
-                    <h3>Panel options</h3>
-                    <p> options</p>
-                    <br/>
-                    <a href='#demo-links' data-rel='close' data-role='button' data-icon='delete'>Close panel</a>
-                </div><!-- /content wrapper for padding -->
-            </div><!-- /PanelMenu -->
-          
+<body onload="init()"> 
+<div id="launcherPage" data-role="page">
+	<!-- I'm just here waiting for deviceReady -->
+</div>
+
+<div id="loginPage" data-role="page">
+
+    <div data-role="header" id="div-Offline" class="ui-bar ui-bar-r" style="display: none">
+        <h6>offline</h6>
+    </div>
+    
+    <div data-role="content">    
+
+        <form id="loginForm">
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" value="" placeholder="Username" />
         </div>
-        <script>
-            app.initialize();
-        </script>
+
+        <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" value="" placeholder="Password" />
+        </div>
+
+        <input type="submit" value="Login" id="submitButton">
+        </form>
         
-    </body>
+    </div>
+
+</div>
+
+</body>
 </html>

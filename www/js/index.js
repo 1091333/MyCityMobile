@@ -19,15 +19,14 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        //this.bindEvents();
-        this.buildListviewTravels();
+        this.bindEvents();
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', this.onDeviceReady, true);
     },
     // deviceready Event Handler
     //
@@ -35,6 +34,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        app.buildListviewTravels();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
