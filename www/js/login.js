@@ -1,7 +1,7 @@
 function init() {
     console.log("init");
     document.addEventListener("online", onOnline, false);
-	document.addEventListener("deviceready", ondeviceReady, false);
+	document.addEventListener("deviceready", ondeviceReady, true);
 	delete init;
 }
 

@@ -19,7 +19,8 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        this.bindEvents();
+        app.buildListviewTravels();
+        //this.bindEvents();
     },
     // Bind Event Listeners
     //
@@ -59,7 +60,7 @@ var app = {
     
         var ullistViewTag = document.getElementById("listviewTravels");
         
-        
+        alert("passou");
         
         for(i=0; i<listTravels.length; i++){
 
@@ -86,20 +87,20 @@ var app = {
             var pTx =document.createTextNode(listTravels[i][2]);
             pTag.appendChild(pTx);
             aTag.appendChild(pTag);
-           
+        /*   
             var ptTag = document.createElement('p');
             ptTag.setAttribute('class', "ui-li-aside");
             var tTx = document.createTextNode(listTravels[i][3]);
             ptTag.appendChild(tTx);
             liTag.appendChild(ptTag);
-        /*
+        */
             var aGearTag = document.createElement('a');
             aGearTag.setAttribute('href', 'lists-split-' +listTravels[i][0] + '.html');
             aGearTag.setAttribute('data-rel', 'dialog' );
             aGearTag.setAttribute('data-transition', 'slideup' );
             
             liTag.appendChild(aGearTag);
-        */
+        
 
         }
     }
