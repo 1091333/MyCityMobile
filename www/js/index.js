@@ -19,8 +19,7 @@
 var app = {
     // Application Constructor
     initialize: function() {
-        app.buildListviewTravels();
-        //this.bindEvents();
+        this.bindEvents();
     },
     // Bind Event Listeners
     //
