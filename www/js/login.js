@@ -1,7 +1,10 @@
 function init() {
+    $.mobile.changePage("home.html");
+    /*
     console.log("init");
     document.addEventListener("online", onOnline, false);
 	document.addEventListener("deviceready", ondeviceReady, true);
+    */
 	delete init;
 }
 
