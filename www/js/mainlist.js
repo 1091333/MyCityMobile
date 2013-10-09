@@ -1,13 +1,8 @@
 var urlToHandler = "http://alfa.takeacity.com/agent/mytravel/";
 
-
+var entID = 230;
 
 function init(){
-    
-    /* login */
-    var entID = 230;
-    
-    /*load info */
 	$(document).ready(function(){
 		getMainList(entID);
     });
@@ -49,12 +44,16 @@ function getMainList(entID)
     function onComplete_GetMainListNow(result) {
 
         /* *****************    limpar item      ***************** */
-        clearElement("MainList");
+        clearElement("Home");
  
         /* *****************      Mainlist       ***************** */
         for (var item in result.MainList){
             
-            if(result.MainList[item].Style == "Day"){
+            if(result.MainList[item].Style == "LastCity"){
+                
+                createCity(result.MainList[item]);
+                
+            } else if(result.MainList[item].Style == "Day"){
                 
                 createDay(result.MainList[item]);
                 
@@ -67,7 +66,7 @@ function getMainList(entID)
                 createItem(result.MainList[item]);
             }
         }
-    }
+    };
 
         /* erro pedido ajax */
     function onFail_GetMainList(result) {
@@ -79,7 +78,7 @@ function getMainList(entID)
             alert("Code error: "+ result.status + "<br>" + result.responseText);
             clearElement("MainList");
         }
-    }
+    };
     
     /* criar div dia */
     function createDay(item){
@@ -129,14 +128,13 @@ function getMainList(entID)
                 divStartTime.appendChild(txtStartTime);
             div.appendChild(divStartTime);
         
-            if(item.EndHour != ""){
-                    /* div hora fim */
-                var divEndTime = document.createElement("div");
-                    divEndTime.setAttribute("class","SubItemTime");
-                    var txtEndTime = document.createTextNode(item.EndHour);
-                    divEndTime.appendChild(txtEndTime);
-                div.appendChild(divEndTime);
-            }
+                /* div hora fim */
+            var divEndTime = document.createElement("div");
+                divEndTime.setAttribute("class","SubItemTime");
+                var txtEndTime = document.createTextNode(item.EndHour);
+                divEndTime.appendChild(txtEndTime);
+            div.appendChild(divEndTime);
+        
                 /* div simbolo */
             var divSymbol = document.createElement("div");
                 divSymbol.setAttribute("class","SubItemSymbol");

@@ -1,13 +1,3 @@
-function init() {
-    $.mobile.changePage("home.html");
-    /*
-    console.log("init");
-    document.addEventListener("online", onOnline, false);
-	document.addEventListener("deviceready", ondeviceReady, true);
-    */
-	delete init;
-}
-
 function checkPreAuth() {
     
 	console.log("checkPreAuth");
@@ -27,18 +17,24 @@ function handleLogin() {
     var u = $("#username", form).val();
     var p = $("#password", form).val();
     if(u != '' && p!= '') {
+    /*
         $.post("http://www.coldfusionjedi.com/demos/2011/nov/10/service.cfc?method=login&returnformat=json", {username:u,password:p}, function(res) {
+    */
             alert(res);
+            var res = true;	/* condição sempre verdadeira*/
             if(res == true) {
                 //store
                 window.localStorage["username"] = u;
-                window.localStorage["password"] = p;             
-                $.mobile.changePage("home.html");
+                window.localStorage["password"] = p;
+                $.mobile.changePage("travels.html");
             } else {
                 navigator.notification.alert("Your login failed", function() {});
             }
          $("#submitButton").removeAttr("disabled");
-        },"json");
+    /*}
+    	,"json");
+    	navigator.notification.alert("Your login failed", function() {}); 
+    */
     } else {
         navigator.notification.alert("You must enter a username and password", function() {});
         $("#submitButton").removeAttr("disabled");
@@ -46,55 +42,14 @@ function handleLogin() {
     return false;
 }
 
-function ondeviceReady() {
-    
-    document.addEventListener("offline", onOffline, false);
-
-	console.log("deviceReady");
+/*
+$(index.html).ready(function(){
 	$("#loginPage").on("pageinit",function() {
 		console.log("pageinit run");
 		$("#loginForm").on("submit",handleLogin);
 		checkPreAuth();
 	});
+	
 	$.mobile.changePage("#loginPage");
-}
-
-// Handle the online event
-    //
-    function onOnline() {
-        console.log("onOnline");
-        showAlert('Device online','connection','Done');
-        var time = 2000;
-        vibrate(time);
-        $("divOffline").hide();
-    }
-
-// Handle the offline event
-    //
-    function onOffline() {
-        console.log("onOnline");
-        $("divOffline").show();
-        showAlert('Device offline','connection','Done');
-    }
-
-// Show a alert
-    //
-    function showAlert(message, title, buttonName) {
-        navigator.notification.alert(
-            message,            // message
-            title,              // title
-            buttonName          // buttonName
-        );
-    }
-
-    // Beep three times
-    //
-    function playBeep(amount) {
-        navigator.notification.beep(amount);
-    }
-
-    // Vibrate for 2 seconds
-    //
-    function vibrate(time) {
-        navigator.notification.vibrate(time);
-    }
+});
+*/
